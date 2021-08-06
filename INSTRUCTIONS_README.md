@@ -12,8 +12,20 @@ Why does querySelectAll give us an array of elements?
 
 
 1. (X) Connect the given javascript file to your HTML 
+
+        <script src="./js/index.js"></script> connects and loads up the JS to the html doc and provides dynamic functionality
+
 2. (X) Connect the given styles file to your HTML
+
+         <link rel="stylesheet" href="./styles/styles.css"> links the css to the html doc to provide styling
+
 3. (X) Use the styles file to center the container class element in the middle of the screen using flexbox use a flex direction of column
+
+        display:flex;   Turns the elements into flex items
+        flex-direction: column;   displays flex items vertically/stacked on one another like in a column
+        align-items: center;      centers all flex-items horizontally across the screen
+        justify-content: center;  Not needed but will center items vertically on the screen in their containers
+
 4.  In your HTML file, inside of the section element that has a class of "win-game-modal", Create a div in your HTML that has a class of modal and id of modal
 	1. add a child div to that modal and give it class of modal-content
 	2. The next 6 steps all happen in the div.modal-content element
@@ -23,20 +35,61 @@ Why does querySelectAll give us an array of elements?
 		4. Show the vault-boy-thumb-up image
 		5. add a button with a class of btn and play-again-btn with text that reads "Play Again?"
 		6. (X) Style the modal content and make it look good  (try display flex, justify content center, flex direction column, align items center)
+
+            Display: flex provides flexible positioning of all of the elements in the modal
+            flex-direction: column stacks the elements in a column
+            align-items and justify-content: center, centers the elements inside the modal
+            I also added a white background and gold margin to edge out the modal-content from the modal itself which covers the entire screen 
+
 	3. Once your done styling the modal class implement the following changes
 		1. give your modal class
 			1. (X) position: fixed
+
+          keeps the modal stationary while scrolling
+
 			2. (X) top: 0
+
+          fixes the modal margin to the top of it's parent container on the screen
+
 			3. (X) left: 0
+
+          does the same as top but with the left margin on the screen
+
 			4. (X) display: none
+
+          hides the modal from the page view until activated (changed to block) to pop up over the page
+
 5. Go to the JS file and look over the code, using the steps below will guide you on fixing the code.
 	1. (X) Go to the startGame function and implement the pseudo code
+      
+      The for loop will iterate through the shuffledDeck and create the necessary HTML elements and add them to the table deck
+
 	2. (X) Go to the compareTwo function and implement the pseudo code
+      
+      Access the two elements in the array 'opened' and check if the src attributes match
+        opened[0].src == opened[1].src 
+          matching pictures will have the same image name in the path
+      Key note is we need to check when opened.length == or === 2 for both conditions (match or no match)
+
 	3. (X) Go the displayMatching Cards function and complete the unimplemented pseudo code
+      
+      pushing both opened[0,1] elements to the matched array so they can stay flipped and disable all mouse clicks/flipping to those cards. This array is also used to verify the count of elements in the array to determine if the game is over
+
 	4. (X) Go to the checkIsGameFinished and implement pseudo code
+
+      Just needed to implement function calls for stopTime() to stop the time count for the game play, as well as addStatsToModal() which generated the necessary HTML elements and added them to the modal for display, and finally displayModal() to activate the modal view on the gameboard 
+
 	5. (X) Go to the addStatsToModal function and complete the unimplemented pseudocode
+
 		1. Also change the innerHTML for the p tags so that they have useful information in it to the user.
+
+        Created the p tag elements and assigned the class stats so that the css can style the stats accordingly. The p tags where then added to the modal. 
+
+        innerHTML for each p tag was updated to reflect the appropriate output using text along with formatting and the variables that recorded the game play.
+
 	6. (X) Go to the displayModal function and complete the unimplemented pseudocode
+
+        Grabbed the modal itself along with the modalClose element (the x for 'close' button) and then updated the modal display to block, bringing the modal to view on the page. If a user clicks the x 'close' button or anywhere outside of the modal-content on the opaque area of the modal, the modal was then turned to display none and removed from the page view but the game is not reset. The play again button also will reset the game and remove the modal.
 
 Stuck??
 - After each major step, click through the game and see if any errors come up. If an error comes up refer to steps above and corresponding pseudo code to ensure to implemented it correctly.
